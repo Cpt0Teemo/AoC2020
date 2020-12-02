@@ -17,7 +17,7 @@ validatePassword pwd = isAtFirstPosition `xor` isAtSecondPosition
 		isAtSecondPosition = secondIndex `elem` (elemIndices char (password pwd))
 		char = letter pwd
 		firstIndex = ((fst . policy) pwd) - 1
-		secondIndex = ((snd . policy) pwd)
+		secondIndex = ((snd . policy) pwd) - 1
 
 parsePassword :: String -> Password
 parsePassword string = Password { policy=(lowest, highest), letter=char, password=pwd}
