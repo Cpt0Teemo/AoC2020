@@ -70,6 +70,6 @@ getValueFromKey key values =
 		pairs = (catMaybes . map (stripPrefix key)) values
 
 getGroupsOfStrings :: [String] -> [String] -> [[String]] -> [[String]]
-getGroupsOfStrings [] _ acc = acc
+getGroupsOfStrings [] curr acc = curr:acc
 getGroupsOfStrings ("":xs) curr acc = getGroupsOfStrings xs [] (curr:acc)
 getGroupsOfStrings (x:xs) curr acc = getGroupsOfStrings xs ((words x)++curr) acc
