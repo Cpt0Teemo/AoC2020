@@ -11,12 +11,12 @@ main = do
 run :: Int -> Int -> [(Int, Command)] -> Int
 run counter acc instructions =
 	case getCommand counter instructions of
-		Just (Acc value) -> run (counter + 1) (acc + value) instructions
-		Just (Jump value) -> run (counter + value) acc instructions
-		Just Nop  -> run (counter + 1) acc instructions
+		Just (Acc value) -> run (counter + 1) (acc + value) nextInstructions
+		Just (Jump value) -> run (counter + value) acc nextInstructions
+		Just Nop  -> run (counter + 1) acc nextInstructions
 		Nothing -> acc
 	where
-		instructions = deleteCommand counter instructions
+		nextInstructions = deleteCommand counter instructions
 
 
 parseCommand :: String -> Command
